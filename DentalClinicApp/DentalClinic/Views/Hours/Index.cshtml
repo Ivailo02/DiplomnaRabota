@@ -1,0 +1,45 @@
+﻿@model IEnumerable<DentalClinic.Entities.Hour>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>All Schedules</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FreeHour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dentist)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reservation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FreeHour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dentist.EGN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reservation.Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                <a asp-action="Create" asp-controller="Reservations" asp-route-id="@item.Id">Reservation</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
